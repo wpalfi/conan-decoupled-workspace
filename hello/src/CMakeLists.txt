@@ -7,8 +7,6 @@ target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_library(hello::hello ALIAS hello)
 
-message(INFO "CMAKE_MODULE_PATH=${CMAKE_MODULE_PATH}")
-
 if(NOT TARGET say::say)
     find_package(say REQUIRED)
 endif()
