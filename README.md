@@ -1,2 +1,2 @@
-# conan-simple-workspace
-example sketch for simpler conan workspaces feature 
+# conan-decoupled-workspace
+example sketch for more flexible conan workspaces feature 
