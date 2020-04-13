@@ -2,13 +2,21 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(Chat)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS)
+option(CHAT_WITH_CONAN "Use conan" ON)
+if(CHAT_WITH_CONAN)
+    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    conan_basic_setup(TARGETS)
+endif()
 
-#Could use add_subdirectory for one or more libs instead of using conan packages
-#(conan workspace should generate this)
-#
-#  add_subdirectory(../say/src say)
-#  add_subdirectory(../hello/src hello)
+set(CHAT_SAY_SOURCE_PATH "" CACHE PATH "Path to FiberBlob source")
+if(CHAT_SAY_SOURCE_PATH)
+    add_subdirectory(${CHAT_SAY_SOURCE_PATH} Say)
+endif()
+
+set(CHAT_HELLO_SOURCE_PATH "" CACHE PATH "Path to FiberBlob source")
+if(CHAT_HELLO_SOURCE_PATH)
+    add_subdirectory(${CHAT_HELLO_SOURCE_PATH} Hello)
+endif()
 
 add_subdirectory(src)
+
